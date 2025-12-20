@@ -5,6 +5,18 @@
     export XMODIFIERS=@im=ibus
     export GLFW_IM_MODULE=ibus
 
+# MACROS
+    # cmake macro, to make it more `make`-like
+    bake() {
+        if [ "$1" = "clean" ]; then
+            echo "Cleaning build directory..."
+            cmake --build build --target clean
+            return
+        fi
+    
+        cmake -B build -S . && cmake --build build
+    }
+
 # ALIASES
     alias c='clear'
     
