@@ -42,7 +42,7 @@ bake() {
     alias c='clear'
     
     alias ls='eza'
-    alias la='eza -a'
+    alias la='ls -a'
     alias ll='la -olh --smart-group --no-user --no-time'
     alias lls='ll --total-size'
     
