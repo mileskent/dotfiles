@@ -49,7 +49,6 @@ bake() {
     alias grep='grep --color=auto'
     alias cp='cp -rv'
     alias cat='bat'
-    alias open='xdg-open'
     
     alias gadd='git add -A && git status'
     alias gp='git pull'
