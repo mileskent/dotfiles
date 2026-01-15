@@ -14,6 +14,8 @@ vim.cmd[[set autoread]]
 vim.cmd[[set showcmd]]
 vim.cmd[[set number]]
 vim.cmd[[set relativenumber]]
+vim.cmd[[set colorcolumn=80]]
+vim.cmd[[set cursorline]]
 vim.cmd[[colorscheme miniautumn]]
 vim.o.cursorlineopt = 'both'
 vim.opt.termguicolors = true
