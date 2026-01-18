@@ -1,13 +1,18 @@
 [[ $- != *i* ]] && return # If not running interactively, don't do anything
 
-# ibus support for multilang kb
-    export QT_IM_MODULE=ibus
-    export XMODIFIERS=@im=ibus
-    export GLFW_IM_MODULE=ibus
+# ENV VARS
+export VISUAL=nvim
+export EDITOR=nvim
+PS1='[\u @ \W]\n λ '
 
-# MACROS
-
-# cmake macro, to make it more `make`-like
+# FUNCTIONS
+y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
 bake() {
     local build_dir="build"
 
@@ -48,7 +53,6 @@ bake() {
     
     alias grep='grep --color=auto'
     alias cp='cp -rv'
-    alias cat='bat'
     
     alias gadd='git add -A && git status'
     alias gp='git pull'
@@ -57,7 +61,5 @@ bake() {
     alias gl="git log --graph --abbrev-commit --decorate --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white) - %an%C(reset)%C(auto)%d%C(reset)'"
     alias lg='lazygit'
     
-
-# MISC
+# PACKAGES
     eval "$(fzf --bash)"
-    PS1='[\u@\h \W]\$ '
