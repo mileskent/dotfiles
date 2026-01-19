@@ -1,4 +1,4 @@
-return { 
+return {
     'echasnovski/mini.nvim',
     version = false,
     config = function()
@@ -16,4 +16,4 @@ return {
         require('mini.notify').setup()
         require('mini.trailspace').setup()
     end
-} 
+}
