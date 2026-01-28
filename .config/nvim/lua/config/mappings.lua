@@ -1,6 +1,19 @@
 vim.cmd[[syntax on]]
 vim.cmd[[set tabstop=4]]
 vim.cmd[[set shiftwidth=4]]
+vim.cmd[[set mouse=]]
+vim.cmd[[nnoremap <up> <nop>]]
+vim.cmd[[nnoremap <down> <nop>]]
+vim.cmd[[nnoremap <left> <nop>]]
+vim.cmd[[nnoremap <right> <nop>]]
+vim.cmd[[inoremap <up> <nop>]]
+vim.cmd[[inoremap <down> <nop>]]
+vim.cmd[[inoremap <left> <nop>]]
+vim.cmd[[inoremap <right> <nop>]]
+vim.cmd[[vnoremap <up> <nop>]]
+vim.cmd[[vnoremap <down> <nop>]]
+vim.cmd[[vnoremap <left> <nop>]]
+vim.cmd[[vnoremap <right> <nop>]]
 vim.cmd[[set shiftround]]
 vim.cmd[[set expandtab]]
 vim.cmd[[set linebreak]]
@@ -19,6 +32,20 @@ vim.cmd[[set cursorline]]
 vim.cmd[[colorscheme miniautumn]]
 vim.o.cursorlineopt = 'both'
 vim.opt.termguicolors = true
-
 vim.keymap.set('n', '<C-e>', ':lua MiniFiles.open()<CR>', { noremap = true, silent = false })
+
+local function goto_buffer_by_index(index)
+    local buffers = vim.fn.getcompletion('', 'buffer')
+    local target = buffers[index]
+    if target then
+        vim.cmd('buffer ' .. target)
+    else
+        print("No buffer at index " .. index)
+    end
+end
+for i = 1, 9 do
+    vim.keymap.set('n', string.format('<M-%d>', i), function()
+        goto_buffer_by_index(i)
+    end, { desc = "Go to buffer " .. i })
+end
 

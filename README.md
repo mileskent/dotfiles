@@ -1,9 +1,6 @@
 # My Dotfiles
 ## Usage
-Make sure that you have [GNU stow](https://www.gnu.org/software/stow/)
-```
-yay -Sy stow 
-```
+Make sure that you have [GNU stow](https://command-not-found.com/stow)
 
 Clone this repo and run stow. This works on clean machines, with no config collisions.
 ```
