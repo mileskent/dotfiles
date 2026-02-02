@@ -1,0 +1,7 @@
+base-devel
+git
+fzf
+eza
+neovim
+yazi
+tmux
