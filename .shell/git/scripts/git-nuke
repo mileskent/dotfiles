@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+if [[ $1 == "help" || $1 == "--help" ]]; then
+    echo "Usage: git nuke"
+    echo "Forcefully reset the repository to match the remote branch"
+    echo "Options:"
+    echo "* help, --help    Show this help message"
+    exit 0
+fi
+
+read -p "Are you sure you want to COMPLETELY NUKE this repo? This is IRREVERSIBLE! [y/N] " -r
+if ! [[ $REPLY =~ ^[Yy]$ ]]; then
+    echo "Aborting git nuke"
+    exit 0
+fi
+
+echo "🚨 Nuking this Repository! 🚨"
+
+echo "Press any key to continue... NOW IS YOUR LAST CHANCE TO BACK OUT! (Ctrl + C)"
+read -n 1 -s
+
+git clean -xdf
+git reset --hard
+git fetch origin
+BRANCH=${1:-$(git rev-parse --abbrev-ref HEAD)}
+git reset --hard origin/$BRANCH
+if [ -e .gitmodules ]; then
+    git submodule deinit --all --force
+    rm -rf .git/modules/*
+    git submodule sync
+    git submodule update --init --recursive
+fi
+echo "Local replaced by origin/$BRANCH"
