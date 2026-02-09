@@ -28,6 +28,6 @@ if [ -e .gitmodules ]; then
     git submodule deinit --all --force
     rm -rf .git/modules/*
     git submodule sync
-    git submodule update --init --recursive
+    git submodule update --init --recursive --remote --force
 fi
 echo "Local replaced by origin/$BRANCH"
