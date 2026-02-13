@@ -12,7 +12,13 @@ return {
         require('mini.pairs').setup()
         require('mini.colors').setup()
         require('mini.cursorword').setup({delay=0})
-        require('mini.indentscope').setup({draw={delay=20}})
+        require('mini.indentscope').setup({draw={delay=1}})
+        -- Disable indentscope in terminal buffers
+        vim.api.nvim_create_autocmd("TermOpen", {
+            callback = function()
+                vim.b.miniindentscope_disable = true
+            end,
+        })
         require('mini.notify').setup()
         require('mini.trailspace').setup()
     end
