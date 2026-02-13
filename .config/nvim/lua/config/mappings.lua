@@ -35,6 +35,18 @@ vim.opt.termguicolors = true
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { desc = 'Exit terminal mode' })
 vim.keymap.set('n', '<Esc>', '<cmd>noh<CR><Esc>', { desc = 'Clear highlights on Escape' })
 
+-- theme
+vim.keymap.set('n', '<leader>rt', function()
+    if vim.o.background == 'dark' then
+        vim.o.background = 'light'
+    else
+        vim.o.background = 'dark'
+    end
+end, { desc = 'Toggle light/dark theme' })
+vim.keymap.set('n', '<leader>rl', '<cmd>Telescope colorscheme enable_preview=true<cr>', {
+    desc = 'List colorschemes (Telescope)'
+})
+
 -- tabs
 vim.keymap.set('n', '<Leader>tn', ':tabnew<CR>')
 vim.keymap.set('n', '<Leader>tc', ':tabclose<CR>')
