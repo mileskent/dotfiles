@@ -4,10 +4,16 @@ bake() {
     if [[ "$1" == "help" ]] || [[ "$1" == "--help" ]]; then
         # Print usage instructions
         echo "Bake Usage:"
-        echo "To build:                 bake"
-        echo "To clean build files:     bake clean"
-        echo "To purge (delete build):  bake purge"
+        echo "To build:                                       bake"
+        echo "To clean build files:                           bake clean"
+        echo "To build & run (assumes 'run' custom target):   bake purge"
+        echo "To purge (delete build):                        bake purge"
         return 0
+    fi
+
+    RUN=""
+    if [[ "$1" == "run" ]]; then
+        RUN="--target run"
     fi
 
     if [[ "$1" == "clean" ]]; then
@@ -25,5 +31,5 @@ bake() {
 
     echo "Bake: Building CMake Project!"
     cmake -B "$build_dir" || { echo "Bake: CMake configuration failed"; return 1; }
-    cmake --build "$build_dir" --parallel || { echo "Bake: Build failed"; return 1; }
+    cmake --build "$build_dir" --parallel $RUN || { echo "Bake: Build failed"; return 1; }
 }
