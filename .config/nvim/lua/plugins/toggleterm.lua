@@ -4,7 +4,6 @@ return {
     config = function()
         require("toggleterm").setup({
             direction = 'float',
-            open_mapping = [[<leader>\]],
             shell = "bash"
         })
 
