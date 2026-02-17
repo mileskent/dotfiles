@@ -6,7 +6,7 @@ bake() {
         echo "Bake Usage:"
         echo "To build:                                       bake"
         echo "To clean build files:                           bake clean"
-        echo "To build & run (assumes 'run' custom target):   bake purge"
+        echo "To build & run (assumes 'run' custom target):   bake run"
         echo "To purge (delete build):                        bake purge"
         return 0
     fi
