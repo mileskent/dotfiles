@@ -35,6 +35,11 @@ vim.opt.termguicolors = true
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { desc = 'Exit terminal mode' })
 vim.keymap.set('n', '<Esc>', '<cmd>noh<CR><Esc>', { desc = 'Clear highlights on Escape' })
 
+-- telescope reg
+vim.keymap.set('n', '<M-v>', '<cmd>Telescope registers<cr>')
+vim.keymap.set('i', '<M-v>', '<cmd>Telescope registers<cr>')
+vim.keymap.set('v', '<M-v>', '"_d<cmd>Telescope registers<cr>')
+
 -- theme
 vim.keymap.set('n', '<leader>rt', function()
     if vim.o.background == 'dark' then
