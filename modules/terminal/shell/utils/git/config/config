@@ -1,2 +1,4 @@
+[user]
+    includePath = ~/.config/git/config.local
 [push]
     autoSetupRemote = true
