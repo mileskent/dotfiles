@@ -1,3 +1,4 @@
+#!/bin/bash
 PKG="${PWD##*/}"
 TARGET="$HOME/.config/$PKG"
 echo "Setting up: $PKG"
