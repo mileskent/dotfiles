@@ -1,0 +1,2 @@
+git:
+  branchLogCmd: "sh -c 'command -v git-graph >/dev/null 2>&1 && git-graph --no-pager --color=always --model simple || git log --graph --color=always --abbrev-commit --decorate --date=relative --all'"
