@@ -64,8 +64,6 @@ local function goto_buffer_by_index(index)
     local target = buffers[index]
     if target then
         vim.cmd('buffer ' .. target)
-    else
-        print("No buffer at index " .. index)
     end
 end
 for i = 1, 9 do
