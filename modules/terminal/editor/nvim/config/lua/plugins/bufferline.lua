@@ -1,8 +1,12 @@
 return {
   'akinsho/bufferline.nvim',
   version = "*",
-  dependencies = 'nvim-tree/nvim-web-devicons',
+  dependencies = {
+    'nvim-tree/nvim-web-devicons',
+    'tiagovla/scope.nvim',
+  },
   config = function()
+    require("scope").setup()
     require("bufferline").setup({
       options = {
         mode = "buffers",
