@@ -2,3 +2,5 @@
     includePath = ~/.config/git/config.local
 [push]
     autoSetupRemote = true
+[alias]
+    whoami = !git config user.name && git config user.email
