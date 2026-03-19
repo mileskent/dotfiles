@@ -8,7 +8,3 @@ alias gP='git push'
 alias gs='git status'
 alias gl="git log --graph --abbrev-commit --decorate --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white) - %an%C(reset)%C(auto)%d%C(reset)'"
 alias lg='lazygit'
-
-# ENV
-export GIT_CONFIG_GLOBAL="$HOME/.config/git/config.local"
-touch $GIT_CONFIG_GLOBAL

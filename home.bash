@@ -1,4 +1,4 @@
 #!/bin/bash
 
 cd "$(dirname "$0")"
-find . -name "default.sh" -execdir bash "$(basename {})" \;
+find . -name "default.bash" -execdir bash "$(basename {})" \;
