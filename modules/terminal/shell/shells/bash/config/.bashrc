@@ -13,7 +13,7 @@ short_pwd() {
     if [[ "$parent" == "$cp" ]]; then
         echo "$cp"
     else
-        local shrunk=$(echo "$parent" | sed "s|\([^/]\{1\}\)[^/]*|\1|g; s| /|/|g")
+        local shrunk=$(echo "$parent" | sed 's|/\([^/0-9A-Za-z]*[0-9A-Za-z]\)[^/]*|/\1|g; s|^\([^/0-9A-Za-z]*[0-9A-Za-z]\)[^/]*|\1|')
         echo "${shrunk}/${current}"
     fi
 }
