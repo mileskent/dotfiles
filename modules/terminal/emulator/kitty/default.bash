@@ -1,6 +1,5 @@
 #!/bin/bash
 PKG="${PWD##*/}"
 TARGET="$HOME/.config/$PKG"
-echo "Setting up: $PKG"
 rm -rf $TARGET && mkdir -p $TARGET
-stow -v -t $TARGET config
+stow --verbose=2 -t $TARGET config
