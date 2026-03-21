@@ -5,7 +5,8 @@ PKG="${PWD##*/}"
 TARGET="$HOME/.config/$PKG"
 BASE_CONFIG=$TARGET/config
 rm "$HOME/.gitconfig" 2> /dev/null # make sure we are using ~/.config one
-rm $BASE_CONFIG
+rm $BASE_CONFIG 2> /dev/null
+mkdir -p $TARGET
 stow --verbose=2 -t $TARGET config
 
 # bash
