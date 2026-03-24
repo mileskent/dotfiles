@@ -35,6 +35,16 @@ vim.opt.termguicolors = true
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { desc = 'Exit terminal mode' })
 vim.keymap.set('n', '<Esc>', '<cmd>noh<CR><Esc>', { desc = 'Clear highlights on Escape' })
 
+-- pre buffer write add ons
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  pattern = { "*" },
+  callback = function()
+    local save_cursor = vim.fn.getpos(".")
+    vim.cmd([[%s/\s\+$//e]])
+    vim.fn.setpos(".", save_cursor)
+  end,
+})
+
 -- telescope reg
 vim.keymap.set('n', '<M-v>', '<cmd>Telescope registers<cr>')
 vim.keymap.set('i', '<M-v>', '<cmd>Telescope registers<cr>')
