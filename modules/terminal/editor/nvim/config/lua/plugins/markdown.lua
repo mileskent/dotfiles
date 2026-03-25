@@ -3,5 +3,13 @@ return {
     dependencies = {
         'nvim-treesitter/nvim-treesitter',
         'nvim-mini/mini.nvim'
-    }
+    },
+    config = function()
+        require('render-markdown').setup({
+            bullet = {
+                enabled = true,
+                icons = { '→', '•', '◆', '◇' },
+            },
+        })
+    end
 }
