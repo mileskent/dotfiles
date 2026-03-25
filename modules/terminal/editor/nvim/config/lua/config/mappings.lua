@@ -67,21 +67,3 @@ vim.keymap.set('n', '<Leader>tn', ':tabnew<CR>')
 vim.keymap.set('n', '<Leader>tc', ':tabclose<CR>')
 vim.keymap.set('n', '<Leader>to', ':tabonly<CR>')
 vim.keymap.set('n', '<Leader>tl', ':tabs<CR>')
-
--- buffers
-local function goto_buffer_by_index(index)
-    local buffers = vim.fn.getcompletion('', 'buffer')
-    local target = buffers[index]
-    if target then
-        vim.cmd('buffer ' .. target)
-    end
-end
-for i = 1, 9 do
-    vim.keymap.set('n', string.format('<M-%d>', i), function()
-        goto_buffer_by_index(i)
-    end, { desc = "Go to buffer " .. i })
-end
-vim.keymap.set('n', 'gb', ':bnext<CR>')
-vim.keymap.set('n', 'gB', ':bprev<CR>')
-vim.keymap.set('n', '<Leader>bl', ':Telescope buffers<CR>')
-vim.keymap.set('n', '<Leader>bc', ':bdelete!<CR>') -- force
