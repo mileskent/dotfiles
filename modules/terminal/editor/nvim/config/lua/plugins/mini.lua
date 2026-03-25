@@ -3,7 +3,7 @@ return {
     version = false,
     config = function()
         require('mini.ai').setup()
-        require('mini.surround').setup()
+        require('mini.surround').setup({ silent = true })
         require('mini.comment').setup()
         require('mini.snippets').setup()
         require('mini.completion').setup()
