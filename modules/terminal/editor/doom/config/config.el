@@ -30,6 +30,10 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+;; Dashboard
+(setq +dashboard-ascii-banner-fn nil)
+(defun +dashboard-widget-footer ())
+
 ;; Font
 (setq doom-font (font-spec :family "FiraCode Nerd Font" :size 16.0 :weight 'normal))
 
