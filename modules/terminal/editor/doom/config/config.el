@@ -31,7 +31,7 @@
 ;; they are implemented.
 
 ;; Font
-(setq doom-font (font-spec :family "FiraCode Nerd Font" :size 16 :weight 'normal))
+(setq doom-font (font-spec :family "FiraCode Nerd Font" :size 16.0 :weight 'normal))
 
 ;; Theme
 (setq doom-theme 'doom-gruvbox)
