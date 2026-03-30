@@ -36,6 +36,7 @@
 
 ;; Font
 (setq doom-font (font-spec :family "FiraCode Nerd Font" :size 16.0 :weight 'normal))
+(set-fontset-font t 'unicode (font-spec :family "Symbola") nil 'append)
 
 ;; Theme
 (setq doom-theme 'doom-gruvbox)
@@ -49,3 +50,19 @@
 
 ;; Org
 (setq org-directory "~/org/")
+
+;; Buffers
+(with-eval-after-load 'centaur-tabs
+  (centaur-tabs-mode t)
+  (setq centaur-tabs-style "bar"
+        centaur-tabs-height 32
+        centaur-tabs-set-icons t
+        centaur-tabs-set-modified-marker t
+        centaur-tabs-show-navigation-buttons nil
+        centaur-tabs-set-bar 'under
+        x-underline-at-descent-line t)
+  ; M-1 through M-9 to switch buffers
+  (dotimes (i 9)
+    (let ((n (+ i 1)))
+      (map! :n (kbd (format "M-%d" n))
+            (lambda () (interactive) (centaur-tabs-select-visible-nth-tab n))))))
