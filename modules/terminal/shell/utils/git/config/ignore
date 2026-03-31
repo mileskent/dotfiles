@@ -1,0 +1,29 @@
+# Emacs
+# backup files
+*~
+# autosave files
+\#*\#
+# lock files
+.\#*
+# compiled elisp files
+*.elc
+# autosave list
+auto-save-list
+# tramp cache
+tramp
+# tags
+TAGS
+!TAGS/
+
+# Vim
+# tags
+tags
+!tags/
+# swap files
+*.swp
+*.swo
+*.swn
+
+# VS Code
+.vscode/
+*.code-workspace

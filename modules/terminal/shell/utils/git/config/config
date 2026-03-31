@@ -1,3 +1,5 @@
+[core]
+	excludesfile = ~/.config/git/ignore
 [push]
     autoSetupRemote = true
 [alias]
