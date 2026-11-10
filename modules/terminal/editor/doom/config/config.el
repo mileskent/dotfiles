@@ -39,7 +39,7 @@
 (set-fontset-font t 'unicode (font-spec :family "Symbola") nil 'append)
 
 ;; Theme
-(setq doom-theme 'doom-gruvbox)
+(setq doom-theme 'doom-ayu-mirage)
 
 ;; Line Numbers
 (setq display-line-numbers-type 'relative)
@@ -66,3 +66,30 @@
     (let ((n (+ i 1)))
       (map! :n (kbd (format "M-%d" n))
             (lambda () (interactive) (centaur-tabs-select-visible-nth-tab n))))))
+;; Projectile
+(defun +my/switch-project-open (dir)
+  (let ((default-directory (file-name-as-directory dir)))
+    (if (locate-dominating-file default-directory ".git")
+        (magit-status default-directory)
+      (+vterm/here nil))))
+(setq +workspaces-switch-project-function #'+my/switch-project-open)
+(define-advice projectile-switch-project-by-name
+    (:around (fn project &rest args) allow-non-projects)
+  (cl-letf* ((orig (symbol-function 'projectile-project-p))
+             ((symbol-function 'projectile-project-p)
+              (lambda (&optional dir)
+                (or (funcall orig dir)
+                    (and dir (file-directory-p dir) dir)))))
+    (apply fn project args)))
+
+;; Magit
+(after! magit-log
+  (put 'magit-log-mode 'magit-log-default-arguments
+       '("--graph" "--color" "-n256" "--decorate")))
+(after! magit-margin
+  (setq magit-log-margin '(t age-abbreviated magit-log-margin-width t 18)))
+
+;; Env
+(use-package! exec-path-from-shell
+  :config
+  (exec-path-from-shell-copy-env "GIT_CONFIG_GLOBAL"))
